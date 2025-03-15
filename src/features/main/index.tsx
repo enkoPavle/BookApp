@@ -4,10 +4,13 @@ import {SafeAreaView} from "react-native-safe-area-context"
 import {setStatusBarHidden} from "expo-status-bar"
 
 import {AppText} from "@/shared/components"
+import {useRemoteConfig} from "@/shared/hooks"
 
 import {colors} from "@/constants"
 
 export const MainScreen = () => {
+  const {data} = useRemoteConfig()
+
   useEffect(() => {
     setStatusBarHidden(false)
   }, [])
