@@ -10,14 +10,16 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.books.app",
-      "appleTeamId": "5383A4DQX6"
+      "appleTeamId": "5383A4DQX6",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-app-icon.png",
         "backgroundColor": "#160920"
       },
-      "package": "com.anonymous.Books"
+      "googleServicesFile": "./google-services.json",
+      "package": "com.books.app"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
@@ -35,6 +37,17 @@
         "expo-font",
         {
           "fonts": ["./assets/fonts/Georgia.ttf", "./assets/fonts/NunitoSans.ttf"]
+        }
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/crashlytics",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
         }
       ]
     ]
