@@ -5,6 +5,8 @@ import {setStatusBarHidden} from "expo-status-bar"
 
 import {AppText} from "@/shared/components"
 
+import {InfiniteLoader} from "./components/infinite-loader"
+
 import {RootStackParamList} from "@/navigation/types"
 import {NativeStackScreenProps} from "@react-navigation/native-stack"
 
@@ -34,6 +36,7 @@ export const SplashScreen: FC<Props> = ({navigation}) => {
             Welcome to Book App
           </AppText>
         </View>
+        <InfiniteLoader />
       </ImageBackground>
     </ImageBackground>
   )
@@ -47,7 +50,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    gap: 24
+    gap: 48,
+    paddingBottom: "20%"
   },
   textContainer: {
     gap: 12

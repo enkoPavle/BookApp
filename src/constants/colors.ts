@@ -1,5 +1,6 @@
 export type ColorNames =
   | "white"
+  | "white20"
   | "white70"
   | "white80"
   | "lightSilver"
@@ -11,6 +12,7 @@ export type ColorNames =
 
 export const colors: Record<ColorNames, string> = {
   white: "#ffffff",
+  white20: "#FFFFFF33",
   white70: "#ffffffb2",
   white80: "#FFFFFFCC",
   lightSilver: "#D9D5D6",
