@@ -5,6 +5,7 @@ export type ColorNames =
   | "white80"
   | "lavenderGray"
   | "lightSilver"
+  | "gray"
   | "raspberryPink"
   | "royalRed"
   | "backgroundSplash"
@@ -19,6 +20,7 @@ export const colors: Record<ColorNames, string> = {
   white80: "#FFFFFFCC",
   lavenderGray: "#C1C2CA",
   lightSilver: "#D9D5D6",
+  gray: "#C4C4C4",
   raspberryPink: "#DD48A1",
   royalRed: "#D0006E",
   backgroundSplash: "#160920",

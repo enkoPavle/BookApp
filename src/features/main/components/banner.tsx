@@ -63,8 +63,7 @@ export const Banner: FC<BannerProps> = ({data}) => {
 
 const styles = StyleSheet.create({
   constainer: {
-    position: "relative",
-    marginHorizontal: -padding
+    position: "relative"
   },
   imageContainer: {
     paddingHorizontal: padding
