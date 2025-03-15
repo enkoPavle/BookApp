@@ -1,6 +1,5 @@
 import {FC, useEffect} from "react"
 import {ImageBackground, StyleSheet, View} from "react-native"
-import {getLoadedFonts} from "expo-font"
 import {setStatusBarHidden} from "expo-status-bar"
 
 import {AppText} from "@/shared/components"
@@ -18,7 +17,6 @@ type Props = NativeStackScreenProps<RootStackParamList, "Splash">
 export const SplashScreen: FC<Props> = ({navigation}) => {
   useEffect(() => {
     setStatusBarHidden(true)
-    console.log(getLoadedFonts())
 
     setTimeout(() => {
       navigation.replace("Main")
