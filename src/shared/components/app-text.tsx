@@ -1,31 +1,35 @@
 import {FC} from "react"
-import {StyleProp, StyleSheet, Text, type TextProps, TextStyle} from "react-native"
+import {StyleProp, Text, type TextProps, TextStyle} from "react-native"
 
-import {colors, FontNames, fonts} from "@/constants"
+import {ColorNames, colors, FontNames, fonts} from "@/constants"
 
 interface Props extends TextProps {
-  font: FontNames
-  color?: string
+  size?: number
+  font?: FontNames
+  italic?: boolean
+  color?: ColorNames
   center?: boolean
 }
 
-export const AppText: FC<Props> = ({style, color, center, ...rest}) => {
+export const AppText: FC<Props> = ({
+  style,
+  size,
+  font,
+  italic,
+  color,
+  center,
+  ...rest
+}) => {
   const textStyles: StyleProp<TextStyle> = [
-    styles.base,
     {
-      color,
-      textAlign: center ? "center" : "auto"
+      fontSize: size,
+      fontFamily: fonts[font ?? "notito600"],
+      fontStyle: italic ? "italic" : "normal",
+      textAlign: center ? "center" : "auto",
+      color: colors[color ?? "white"]
     },
     style
   ]
 
   return <Text style={textStyles} {...rest} />
 }
-
-const styles = StyleSheet.create({
-  base: {
-    fontSize: 16,
-    fontFamily: fonts.notito600,
-    color: colors.black
-  }
-})
