@@ -1,5 +1,6 @@
 import {Navigation} from "@/navigation"
 import * as SplashScreen from "expo-splash-screen"
+import {GestureHandlerRootView} from "react-native-gesture-handler"
 import "react-native-reanimated"
 
 SplashScreen.setOptions({
@@ -8,5 +9,9 @@ SplashScreen.setOptions({
 })
 
 export default function App() {
-  return <Navigation />
+  return (
+    <GestureHandlerRootView>
+      <Navigation />
+    </GestureHandlerRootView>
+  )
 }

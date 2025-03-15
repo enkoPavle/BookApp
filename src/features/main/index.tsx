@@ -6,6 +6,8 @@ import {setStatusBarHidden} from "expo-status-bar"
 import {AppText} from "@/shared/components"
 import {useRemoteConfig} from "@/shared/hooks"
 
+import {Banner} from "./components/banner"
+
 import {colors} from "@/constants"
 
 export const MainScreen = () => {
@@ -22,6 +24,7 @@ export const MainScreen = () => {
           Library
         </AppText>
       </View>
+      <Banner data={data} />
     </SafeAreaView>
   )
 }
