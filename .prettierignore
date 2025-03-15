@@ -1,0 +1,14 @@
+node_modules
+.dist
+dist
+.expo
+android
+ios
+.devops
+devops
+package.json
+.package.json
+package-lock.json
+.package-lock.json
+yarn.lock
+.yarn.lock
