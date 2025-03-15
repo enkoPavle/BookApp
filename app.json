@@ -4,7 +4,7 @@
     "slug": "Books",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/app-icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
@@ -14,22 +14,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-app-icon.png",
         "backgroundColor": "#160920"
       },
       "package": "com.anonymous.Books"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       [
         "expo-splash-screen",
         {
           "backgroundColor": "#160920",
-          "image": "./assets/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "dark": {
-            "image": "./assets/splash-icon.png",
+            "image": "./assets/images/splash.png",
             "backgroundColor": "#160920"
           },
           "imageWidth": 200

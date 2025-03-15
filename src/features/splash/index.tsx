@@ -9,14 +9,15 @@ import {InfiniteLoader} from "./components/infinite-loader"
 import {RootStackParamList} from "@/navigation/types"
 import {NativeStackScreenProps} from "@react-navigation/native-stack"
 
-import ImageSplashBack from "#/back.png"
-import ImageSplashHearts from "#/hearts.png"
+import ImageSplashBack from "#/images/back.png"
+import ImageSplashHearts from "#/images/hearts.png"
 
 type Props = NativeStackScreenProps<RootStackParamList, "Splash">
 
 export const SplashScreen: FC<Props> = ({navigation}) => {
   useEffect(() => {
     setStatusBarHidden(true)
+    navigation.preload("Main")
 
     setTimeout(() => {
       navigation.replace("Main")
