@@ -1,7 +1,10 @@
+import {StatusBar} from "expo-status-bar"
+
 import {DetailsScreen, MainScreen, SplashScreen} from "@/features"
 
 import {RootStackParamList} from "./types"
 
+import {colors} from "@/constants"
 import {NavigationContainer} from "@react-navigation/native"
 import {createNativeStackNavigator} from "@react-navigation/native-stack"
 
@@ -9,7 +12,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const RootStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{
+        headerShown: false,
+        contentStyle: {backgroundColor: colors.background},
+        headerStyle: {backgroundColor: colors.background},
+        headerTintColor: colors.white
+      }}
+    >
       <Stack.Screen
         name="Splash"
         component={SplashScreen}
@@ -24,6 +35,7 @@ const RootStack = () => {
 export const Navigation = () => {
   return (
     <NavigationContainer>
+      <StatusBar hidden backgroundColor="black" style="light" />
       <RootStack />
     </NavigationContainer>
   )
