@@ -39,6 +39,8 @@ export const Banner: FC<BannerProps> = ({data}) => {
         width={width}
         height={(width - padding * 2) / aspectRatio}
         data={movies}
+        autoPlay
+        autoPlayInterval={3000}
         onProgressChange={progress}
         renderItem={({index}) => (
           <View style={styles.imageContainer}>
