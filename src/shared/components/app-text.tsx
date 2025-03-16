@@ -22,7 +22,7 @@ export const AppText: FC<Props> = ({
 }) => {
   const textStyles: StyleProp<TextStyle> = [
     {
-      fontSize: size,
+      fontSize: size ?? 16,
       fontFamily: fonts[font ?? "notito600"],
       fontStyle: italic ? "italic" : "normal",
       textAlign: center ? "center" : "auto",
