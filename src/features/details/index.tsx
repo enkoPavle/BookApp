@@ -45,7 +45,6 @@ export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Detai
           data={reorderedBooks}
           height={snapContainerHeight}
           loop={false}
-          pagingEnabled={true}
           snapEnabled={true}
           width={screenSize.width}
           style={{
