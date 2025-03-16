@@ -1,4 +1,4 @@
-import {useEffect, useMemo} from "react"
+import {useCallback, useEffect, useMemo} from "react"
 import {StyleSheet, View} from "react-native"
 import {SafeAreaView, useSafeAreaInsets} from "react-native-safe-area-context"
 import {LinearGradient} from "expo-linear-gradient"
@@ -33,6 +33,11 @@ export const MainScreen = () => {
     return Array.from(map.values())
   }, [data])
 
+  const renderItem = useCallback(
+    ({item}: {item: GenreListItem}) => <GenreItem {...item} />,
+    []
+  )
+
   useEffect(() => {
     setStatusBarHidden(false)
   }, [])
@@ -58,7 +63,7 @@ export const MainScreen = () => {
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={<Banner data={data} />}
         ListHeaderComponentStyle={styles.ListHeaderComponentStyle}
-        renderItem={({item}) => <GenreItem {...item} />}
+        renderItem={renderItem}
         ItemSeparatorComponent={Separator}
       />
     </SafeAreaView>

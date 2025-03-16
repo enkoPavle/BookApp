@@ -1,8 +1,10 @@
-import React, {FC, useMemo} from "react"
-import {Dimensions, StyleSheet, View} from "react-native"
+import React, {FC, useCallback, useMemo} from "react"
+import {Dimensions, Pressable, StyleSheet, View} from "react-native"
 import FastImage from "react-native-fast-image"
 import {useSharedValue} from "react-native-reanimated"
 import Carousel, {ICarouselInstance, Pagination} from "react-native-reanimated-carousel"
+
+import {useAppNavigation} from "@/shared/hooks"
 
 import {colors} from "@/constants"
 import {Book} from "@/schemas/book"
@@ -19,6 +21,7 @@ const padding = 16
 export const Banner: FC<BannerProps> = ({data}) => {
   const ref = React.useRef<ICarouselInstance>(null)
   const progress = useSharedValue<number>(0)
+  const {navigate} = useAppNavigation()
 
   const movies = useMemo(() => {
     const result: Book[] = []
@@ -32,6 +35,26 @@ export const Banner: FC<BannerProps> = ({data}) => {
     return result
   }, [data])
 
+  const renderItem = useCallback(
+    ({index}: {index: number}) => {
+      const book = movies[index]
+
+      return (
+        <Pressable
+          style={styles.imageContainer}
+          onPress={() => navigate("Details", {id: book.id})}
+        >
+          <FastImage
+            source={{uri: book.cover_url}}
+            style={styles.image}
+            resizeMode={FastImage.resizeMode.cover}
+          />
+        </Pressable>
+      )
+    },
+    [movies, navigate]
+  )
+
   return (
     <View style={styles.constainer}>
       <Carousel
@@ -42,15 +65,7 @@ export const Banner: FC<BannerProps> = ({data}) => {
         autoPlay
         autoPlayInterval={3000}
         onProgressChange={progress}
-        renderItem={({index}) => (
-          <View style={styles.imageContainer}>
-            <FastImage
-              source={{uri: movies[index].cover_url}}
-              style={styles.image}
-              resizeMode={FastImage.resizeMode.cover}
-            />
-          </View>
-        )}
+        renderItem={renderItem}
       />
       <Pagination.Basic
         progress={progress}
