@@ -1,4 +1,4 @@
-import {FC, useCallback, useMemo, useRef, useState} from "react"
+import {FC, useCallback, useEffect, useMemo, useRef, useState} from "react"
 import {ImageBackground, StyleSheet, View} from "react-native"
 import Animated, {Easing, interpolate, useSharedValue} from "react-native-reanimated"
 import Carousel, {ICarouselInstance} from "react-native-reanimated-carousel"
@@ -31,6 +31,7 @@ Animated.addWhitelistedNativeProps({intensity: true})
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView)
 
 export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Details">> = ({
+  navigation,
   route: {params}
 }) => {
   const ref = useRef<ICarouselInstance>(null)
@@ -84,6 +85,16 @@ export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Detai
     // prevent flickering on intensity between 0 and 1
     animatedIntensity.value = intensity >= 1 ? intensity : 0
   }, [])
+
+  useEffect(() => {
+    const callback = () => setTimeout(() => bottomSheetRef.current?.snapToIndex(0), 250)
+
+    navigation.addListener("blur", callback)
+
+    return () => {
+      navigation.removeListener("blur", callback)
+    }
+  }, [navigation])
 
   return (
     <View style={styles.container}>
@@ -172,6 +183,7 @@ const styles = StyleSheet.create({
     top: -3,
     left: -5,
     right: -5,
-    bottom: -3
+    bottom: -3,
+    pointerEvents: "none"
   }
 })
