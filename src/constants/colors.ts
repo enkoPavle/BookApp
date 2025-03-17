@@ -12,6 +12,7 @@ export type ColorNames =
   | "background"
   | "onyx"
   | "black"
+  | "transparent"
 
 export const colors: Record<ColorNames, string> = {
   white: "#ffffff",
@@ -26,5 +27,6 @@ export const colors: Record<ColorNames, string> = {
   backgroundSplash: "#160920",
   background: "#101010",
   onyx: "#393637",
-  black: "#0B080F"
+  black: "#0B080F",
+  transparent: "transparent"
 }

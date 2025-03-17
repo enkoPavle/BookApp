@@ -1,6 +1,8 @@
+import {Pressable} from "react-native"
 import {StatusBar} from "expo-status-bar"
 
 import {DetailsScreen, MainScreen, SplashScreen} from "@/features"
+import {SVGIcon} from "@/shared/components"
 
 import {RootStackParamList} from "./types"
 
@@ -27,7 +29,21 @@ const RootStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen name="Main" component={MainScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen
+        name="Details"
+        component={DetailsScreen}
+        options={({navigation}) => ({
+          headerShown: true,
+          headerTransparent: true,
+          headerTitle: "",
+          headerStyle: {backgroundColor: colors.transparent},
+          headerLeft: () => (
+            <Pressable onPressIn={() => navigation.goBack()}>
+              <SVGIcon name="arrow_left" color={colors.white} />
+            </Pressable>
+          )
+        })}
+      />
     </Stack.Navigator>
   )
 }

@@ -4,6 +4,7 @@ import Animated, {Easing, interpolate, useSharedValue} from "react-native-reanim
 import Carousel, {ICarouselInstance} from "react-native-reanimated-carousel"
 import {useSafeAreaInsets} from "react-native-safe-area-context"
 import {BlurView} from "expo-blur"
+import {StatusBar} from "expo-status-bar"
 
 import {AppButton, BookList} from "@/shared/components"
 import {useRemoteConfig} from "@/shared/hooks"
@@ -81,6 +82,7 @@ export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Detai
 
   return (
     <View style={styles.container}>
+      <StatusBar translucent backgroundColor="transparent" />
       <ImageBackground
         source={ImageDetailsBackground}
         style={{height: snapContainerHeight}}

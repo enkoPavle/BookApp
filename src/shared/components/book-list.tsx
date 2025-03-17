@@ -1,7 +1,9 @@
 import {FC, useCallback} from "react"
 import {Pressable, StyleSheet, View} from "react-native"
 
-import {AppText, BookItem, Separator} from "@/shared/components"
+import {AppText} from "@/shared/components/app-text"
+import {BookItem} from "@/shared/components/book-item"
+import {Separator} from "@/shared/components/separator"
 import {useAppNavigation} from "@/shared/hooks"
 
 import {Book} from "@/schemas/book"

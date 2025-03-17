@@ -2,7 +2,7 @@ import {FC} from "react"
 import {StyleSheet, View} from "react-native"
 import FastImage from "react-native-fast-image"
 
-import {AppText} from "@/shared/components"
+import {AppText} from "@/shared/components/app-text"
 
 import {colors} from "@/constants"
 import {Book} from "@/schemas/book"
