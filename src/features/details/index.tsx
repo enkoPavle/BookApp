@@ -62,10 +62,10 @@ export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Detai
       .filter((book): book is Book => book !== undefined)
   }, [data?.books, data?.you_will_like_section])
 
-  const selectedBook: Book | undefined = useMemo(() => {
-    if (!reorderedBooks.length) return undefined
-    return reorderedBooks[selectedIndex]
-  }, [reorderedBooks, selectedIndex])
+  const selectedBook: Book | undefined = useMemo(
+    () => reorderedBooks[selectedIndex],
+    [reorderedBooks, selectedIndex]
+  )
 
   const onProgressChange = useCallback((offsetProgress: number) => {
     const currentIndex = ref.current?.getCurrentIndex()

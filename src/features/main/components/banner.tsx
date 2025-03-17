@@ -11,7 +11,7 @@ import {Book} from "@/schemas/book"
 import {JsonData} from "@/schemas/json-data"
 
 interface BannerProps {
-  data: JsonData | null
+  data: JsonData | undefined
 }
 
 const {width} = Dimensions.get("window")
