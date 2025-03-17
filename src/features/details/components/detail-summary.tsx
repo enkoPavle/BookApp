@@ -8,16 +8,14 @@ import {Book} from "@/schemas/book"
 
 interface Props {
   summary?: Book["summary"]
-  BlurComponent: React.ComponentType
 }
 
 export const DetailSumary: FC<Props> = memo(
-  ({summary, BlurComponent}) => (
+  ({summary}) => (
     <View style={styles.container}>
       <View style={styles.content}>
         <AppText style={styles.title}>Summary</AppText>
         <AppText style={styles.value}>{summary}</AppText>
-        <BlurComponent />
       </View>
     </View>
   ),

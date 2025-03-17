@@ -133,20 +133,16 @@ export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Detai
             {paddingBottom: insets.bottom + 52}
           ]}
         >
-          <DetailSumary
-            summary={selectedBook?.summary}
-            BlurComponent={() => (
-              <AnimatedBlurView
-                intensity={animatedIntensity}
-                tint={"extraLight"}
-                style={styles.animatedBlurView}
-              />
-            )}
-          />
+          <DetailSumary summary={selectedBook?.summary} />
           <BookList variant="light" title="You will also like" books={recommendedBooks} />
           <View style={styles.buttonContainer}>
             <AppButton>Read Now</AppButton>
           </View>
+          <AnimatedBlurView
+            intensity={animatedIntensity}
+            tint={"extraLight"}
+            style={styles.animatedBlurView}
+          />
         </BottomSheetScrollView>
       </BottomSheet>
     </View>
@@ -158,6 +154,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   contentContainer: {
+    position: "relative",
     gap: 16,
     paddingTop: 16
   },
