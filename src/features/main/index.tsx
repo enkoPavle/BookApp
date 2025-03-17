@@ -4,11 +4,10 @@ import {SafeAreaView, useSafeAreaInsets} from "react-native-safe-area-context"
 import {LinearGradient} from "expo-linear-gradient"
 import {setStatusBarHidden} from "expo-status-bar"
 
-import {AppText, Separator} from "@/shared/components"
+import {AppText, BookList, Separator} from "@/shared/components"
 import {useRemoteConfig} from "@/shared/hooks"
 
 import {Banner} from "./components/banner"
-import {GenreItem} from "./components/genre-item"
 import {GenreListItem} from "./types"
 
 import {colors} from "@/constants"
@@ -34,7 +33,7 @@ export const MainScreen = () => {
   }, [data])
 
   const renderItem = useCallback(
-    ({item}: {item: GenreListItem}) => <GenreItem {...item} />,
+    ({item}: {item: GenreListItem}) => <BookList title={item.genre} books={item.books} />,
     []
   )
 

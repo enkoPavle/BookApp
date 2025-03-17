@@ -4,19 +4,22 @@ import FastImage from "react-native-fast-image"
 
 import {AppText} from "@/shared/components"
 
-import {bookItemImageHeight, bookItemWidth} from "../util/book-item-size"
-
 import {colors} from "@/constants"
 import {Book} from "@/schemas/book"
+import {bookItemImageHeight, bookItemWidth} from "@/util/book-item-size"
 
-export const BookItem: FC<Book> = ({cover_url, name}) => {
+interface Props extends Book {
+  variant?: "light" | "dark"
+}
+
+export const BookItem: FC<Props> = ({variant, cover_url, name}) => {
   return (
     <View style={styles.container}>
       <FastImage source={{uri: cover_url}} style={styles.image} />
       <AppText
         style={styles.text}
         font="notito700"
-        color="white70"
+        color={variant === "dark" ? "white70" : "onyx"}
         size={16}
         numberOfLines={2}
       >

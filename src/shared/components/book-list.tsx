@@ -1,34 +1,53 @@
 import {FC, useCallback} from "react"
 import {Pressable, StyleSheet, View} from "react-native"
 
-import {AppText, Separator} from "@/shared/components"
+import {AppText, BookItem, Separator} from "@/shared/components"
 import {useAppNavigation} from "@/shared/hooks"
 
-import {BookItem} from "./book-item"
-import {GenreListItem} from "../types"
-import {bookItemWidth} from "../util/book-item-size"
-
 import {Book} from "@/schemas/book"
+import {bookItemWidth} from "@/util/book-item-size"
+import {BottomSheetFlashList} from "@gorhom/bottom-sheet"
 import {FlashList} from "@shopify/flash-list"
 
-export const GenreItem: FC<GenreListItem> = ({genre, books}) => {
+interface Props {
+  variant?: "light" | "dark"
+  useBottomSheetFlashList?: boolean
+  title: string
+  books: Book[]
+}
+
+export const BookList: FC<Props> = ({
+  variant = "dark",
+  useBottomSheetFlashList,
+  title,
+  books
+}) => {
   const navigation = useAppNavigation()
+
+  const ListComponent = useBottomSheetFlashList ? BottomSheetFlashList : FlashList
 
   const renderItem = useCallback(
     ({item}: {item: Book}) => (
       <Pressable onPress={() => navigation.push("Details", {id: item.id})}>
-        <BookItem {...item} />
+        <BookItem variant={variant} {...item} />
       </Pressable>
     ),
-    [navigation]
+    [navigation, variant]
   )
+
+  if (!books.length) return null
 
   return (
     <View style={styles.container}>
-      <AppText style={styles.paddingHorizontal} font="notito700" color="white" size={20}>
-        {genre}
+      <AppText
+        style={styles.paddingHorizontal}
+        font="notito700"
+        color={variant === "dark" ? "white" : "black"}
+        size={20}
+      >
+        {title}
       </AppText>
-      <FlashList
+      <ListComponent
         data={books}
         horizontal
         contentContainerStyle={styles.paddingHorizontal}

@@ -6,7 +6,7 @@ import {AppText} from "@/shared/components"
 
 import {imageAspectRatio, imageWidth} from "../utils/carousel-sizes"
 
-import {colors} from "@/constants"
+import {colors, fonts} from "@/constants"
 import {Book} from "@/schemas/book"
 
 export const CarouselItem: FC<Book> = memo(
@@ -16,10 +16,10 @@ export const CarouselItem: FC<Book> = memo(
         <View style={styles.overlay}>
           <FastImage source={{uri: cover_url}} style={styles.image} />
           <View style={styles.detailsContainer}>
-            <AppText font="notito700" size={20}>
+            <AppText style={styles.name} numberOfLines={2}>
               {name}
             </AppText>
-            <AppText font="notito700" size={14} color="white80">
+            <AppText style={styles.author} numberOfLines={1}>
               {author}
             </AppText>
           </View>
@@ -55,5 +55,16 @@ const styles = StyleSheet.create({
   detailsContainer: {
     gap: 5,
     alignItems: "center"
+  },
+  name: {
+    maxWidth: imageWidth,
+    fontFamily: fonts.notito700,
+    fontSize: 20
+  },
+  author: {
+    maxWidth: imageWidth,
+    fontFamily: fonts.notito700,
+    fontSize: 14,
+    color: colors.white80
   }
 })
