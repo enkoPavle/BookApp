@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   },
   name: {
     maxWidth: imageWidth,
+    textAlign: "center",
     fontFamily: fonts.notito700,
     fontSize: 20
   },
