@@ -4,7 +4,7 @@ import FastImage from "react-native-fast-image"
 
 import {AppText} from "@/shared/components"
 
-import {imageAspectRatio, imageWidth} from "../utils/carousel-sizes"
+import {imageAspectRatio, imageWidth} from "../utils/carousel-params"
 
 import {colors, fonts} from "@/constants"
 import {Book} from "@/schemas/book"

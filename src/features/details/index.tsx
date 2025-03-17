@@ -12,7 +12,12 @@ import {useRemoteConfig} from "@/shared/hooks"
 import {CarouselItem} from "./components/carousel-item"
 import {DetailHeader} from "./components/detail-header"
 import {DetailSumary} from "./components/detail-summary"
-import {carouselBottomOverlap, parallaxScrollingOffset} from "./utils/carousel-sizes"
+import {
+  blurTint,
+  carouselBottomOverlap,
+  maxBlurIntensity,
+  parallaxScrollingOffset
+} from "./utils/carousel-params"
 
 import {screenSize} from "@/constants/screen"
 import {RootStackParamList} from "@/navigation/types"
@@ -74,7 +79,7 @@ export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Detai
 
     const value = Math.abs(offsetProgress / screenSize.width) % 1
     const easedValue = Easing.inOut(Easing.inOut(Easing.cubic))(value)
-    const intensity = interpolate(easedValue, [0, 0.5, 1], [0, 15, 0])
+    const intensity = interpolate(easedValue, [0, 0.5, 1], [0, maxBlurIntensity, 0])
 
     // prevent flickering on intensity between 0 and 1
     animatedIntensity.value = intensity >= 1 ? intensity : 0
@@ -119,7 +124,7 @@ export const DetailsScreen: FC<NativeStackScreenProps<RootStackParamList, "Detai
             BlurComponent={() => (
               <AnimatedBlurView
                 intensity={animatedIntensity}
-                tint={"extraLight"}
+                tint={blurTint}
                 style={styles.animatedBlurView}
               />
             )}
